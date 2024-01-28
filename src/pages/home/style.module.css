@@ -1,0 +1,31 @@
+.home {
+  width: 100%;
+  padding: 0 48px;
+}
+
+.boardList {
+  overflow-x: auto;
+  margin-top: 42px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  padding-bottom: 30px;
+  /* scroll-snap-type: x proximity; */
+
+}
+
+.boardList::-webkit-scrollbar {
+  height: 7px;
+  background-color: #f9f9fd;
+}
+
+.boardList::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: var(--color-text);
+}
+
+.boardList::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  background-color: #f9f9fd;
+}

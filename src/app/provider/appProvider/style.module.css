@@ -1,0 +1,16 @@
+.row {
+  display: flex;
+  align-items: start;
+}
+
+.app {
+  background-color: #E7E8EA;
+  padding-top: 30px;
+}
+
+.container {
+  background-color: #fff;
+  max-width: 1440px;
+  margin: 0 auto;
+  border-radius: 30px;
+}

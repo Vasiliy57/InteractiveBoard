@@ -1,0 +1,49 @@
+.myProjects {
+  padding: 30px 20px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.btn {
+  background-color: #fff;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+}
+
+.item {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgb(49, 221, 49);
+}
+
+.link {
+  position: relative;
+  color: var(--color-text);
+  padding: 10px 0;
+  font-weight: 500;
+  padding: 5px 10px;
+
+}

@@ -16,6 +16,7 @@ import addPurpureIcon from './svg/add-purpure.svg'
 import arrowDownIcon from './svg/arrow-down.svg'
 import calendarNumberIcon from './svg/calendar-number.svg'
 import filterIcon from './svg/filter.svg'
+import arrowLeftIcon from './svg/arrow-left.svg'
 
 interface IconInterface {
   name: keyof typeof ICON_NAMES
@@ -73,6 +74,8 @@ export const Icon: React.FC<IconInterface> = ({ name, size }) => {
       return <img src={calendarNumberIcon} alt={ICON_NAMES.CALENDAR_NUMBER} />
     case ICON_NAMES.FILTER:
       return <img src={filterIcon} alt={ICON_NAMES.FILTER} />
+    case ICON_NAMES.ARROW_LEFT:
+      return <img src={arrowLeftIcon} alt={ICON_NAMES.ARROW_LEFT} />
     default:
       break
   }

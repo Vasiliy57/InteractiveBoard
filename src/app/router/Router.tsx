@@ -1,12 +1,27 @@
-import { Home } from '@pages/home/Home'
+import { observer } from 'mobx-react-lite'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-export const Router: React.FC = () => {
+import { Authorization, Home, Registration } from '@pages/index'
+import MyUserStore from '@app/store/MyUserStore'
+
+import { ROUTING } from '@shared/constants'
+
+export const Router: React.FC = observer(() => {
+  const { isAuth } = MyUserStore
+
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
+      {isAuth ? (
+        <Routes>
+          <Route path={ROUTING.HOME} element={<Home />} />
+        </Routes>
+      ) : (
+        <Routes>
+          <Route path={ROUTING.REGISTRATION} element={<Registration />} />
+          <Route path={ROUTING.AUTHORIZATION} element={<Authorization />} />
+          <Route path="/" element={<Authorization />} />
+        </Routes>
+      )}
     </BrowserRouter>
   )
-}
+})

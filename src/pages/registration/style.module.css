@@ -1,0 +1,43 @@
+.registration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 60px 30px 100px 30px;
+}
+
+.title {
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+
+.input {
+  border-bottom: 1px solid var(--color-text);
+  padding-bottom: 3px;
+  font-size: 1.6;
+  font-weight: 500;
+  color: var(--color-text);
+  width: 100%;
+}
+
+.signIn {
+  background-color: #fff;
+  border: 1px solid var(--color-text);
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: var(--color-text);
+  width: 100%;
+}
+
+.text {
+  font-weight: 400;
+  font-size: 1.4rem;
+  color: var(--color-text);
+}
+
+.link {
+  font-weight: 500;
+  color: var(--color-purpure);
+}

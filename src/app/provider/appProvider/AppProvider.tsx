@@ -13,19 +13,19 @@ export const AppProvider: React.FC<AppProviderProps> = observer(
 
     return (
       <div className={classes.app}>
-        <div className={classes.container}>
-          {isAuth ? (
-            <div className={classes.home}>
+        {isAuth ? (
+          <div className={classes.container}>
+            <div>
               <Header />
               <div className={classes.row}>
                 <NavMenu />
                 {children}
               </div>
             </div>
-          ) : (
-            <div> {children}</div>
-          )}
-        </div>
+          </div>
+        ) : (
+          <div className={classes.wrap}> {children}</div>
+        )}
       </div>
     )
   }

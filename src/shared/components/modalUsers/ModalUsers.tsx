@@ -27,8 +27,9 @@ export const ModalUsers: React.FC<ModalUsersProps> = ({
     <div className={classes.modal} onClick={onDelModal}>
       <div className={classes.list} onClick={onHandlerClick}>
         <div className={classes.btnBack} onClick={onDelModal}>
-          <Icon name={ICON_NAMES.ARROW_LEFT} size="27px" />
+          <Icon name={ICON_NAMES.ARROW_LEFT} size="20px" />
         </div>
+        <h2 className={classes.title}>Project participants</h2>
 
         {list.map((user) => {
           return (

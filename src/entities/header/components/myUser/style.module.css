@@ -46,7 +46,7 @@
   bottom: -95px;
   left: 0;
   right: 30px;
-  background-color: #fff;
+  background-color: #ffffff9f;
   border: 1px solid var(--color-text);
   display: flex;
   flex-direction: column;
@@ -64,6 +64,7 @@
 
 .link {
   cursor: pointer;
+  color: var(--color-purpure);
 }
 
 .exit {

@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
-import classes from './style.module.css'
 import { ROUTING } from '@shared/constants'
+
+import classes from './style.module.css'
+
 export const Authorization: React.FC = () => {
   return (
     <form className={classes.authorization}>

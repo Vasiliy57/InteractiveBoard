@@ -1,7 +1,8 @@
 import { Header, NavMenu } from '@entities/index'
 import MyUserStore from '@app/store/MyUserStore'
-import classes from './style.module.css'
 import { observer } from 'mobx-react-lite'
+
+import classes from './style.module.css'
 
 interface AppProviderProps {
   children: React.ReactNode
@@ -10,10 +11,9 @@ interface AppProviderProps {
 export const AppProvider: React.FC<AppProviderProps> = observer(
   ({ children }) => {
     const { isAuth } = MyUserStore
-
-    return (
-      <div className={classes.app}>
-        {isAuth ? (
+    if (isAuth) {
+      return (
+        <div className={classes.app}>
           <div className={classes.container}>
             <div>
               <Header />
@@ -23,9 +23,12 @@ export const AppProvider: React.FC<AppProviderProps> = observer(
               </div>
             </div>
           </div>
-        ) : (
-          <div className={classes.wrap}> {children}</div>
-        )}
+        </div>
+      )
+    }
+    return (
+      <div className={classes.app}>
+        <div className={classes.wrap}> {children}</div>
       </div>
     )
   }

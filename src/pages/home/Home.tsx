@@ -1,24 +1,24 @@
 import { useEffect, useState } from 'react'
-import { Board, Filter, InfoAboutBoard } from '@entities/index'
-import { createBoard, filterColor } from '@shared/utils'
+import { ColumnForTasks, Filter, InfoAboutBoard } from '@entities/index'
+import { createColumn, filterColor } from '@shared/utils'
 
 import { boardInterface } from '@shared/types'
 import classes from './style.module.css'
 
 export const Home: React.FC = () => {
-  const [boardList, setBoardList] = useState<boardInterface[]>([
+  const [columnList, setColumnList] = useState<boardInterface[]>([
     { title: 'To Do', color: '#5030E5', id: '123asd3432' },
     { title: 'On progress', color: '#FFA500', id: '123asd' },
     // { title: 'Done', color: '#8BC48A' },
   ])
 
   useEffect(() => {
-    filterColor(boardList)
+    filterColor(columnList)
   }, [])
 
-  const addBoard = () => {
-    if (boardList.length < 12) {
-      setBoardList([...boardList, createBoard()])
+  const addColumn = () => {
+    if (columnList.length < 12) {
+      setColumnList([...columnList, createColumn()])
     } else {
       console.log('The maximum value has been reached !!!')
     }
@@ -27,10 +27,10 @@ export const Home: React.FC = () => {
   return (
     <div className={classes.home}>
       <InfoAboutBoard title={'Mobile App'} />
-      <Filter addBoard={addBoard} />
-      <div className={classes.boardList}>
-        {boardList.map((elem) => {
-          return <Board {...elem} key={elem.id} />
+      <Filter addColumn={addColumn} />
+      <div className={classes.columnList}>
+        {columnList.map((elem) => {
+          return <ColumnForTasks {...elem} key={elem.id} />
         })}
       </div>
     </div>

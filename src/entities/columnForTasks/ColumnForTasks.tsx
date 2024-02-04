@@ -1,56 +1,60 @@
 import { DynamicIcon } from '@shared/assets/icon/DynamicIcon'
-import classes from './style.module.css'
 import { useState } from 'react'
 
-interface BoardProps {
+import classes from './style.module.css'
+
+interface ColumnForTasksProps {
   color: string
   title: string
 }
 
-export const Board: React.FC<BoardProps> = ({ title, color }) => {
+export const ColumnForTasks: React.FC<ColumnForTasksProps> = ({
+  title,
+  color,
+}) => {
   const [name, setName] = useState<string>(title)
   const [isChangeName, setIsChangeName] = useState<boolean>(false)
 
   const onHandlerName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value.length > 15) {
+    const inputStroke = e.target.value
+    if (inputStroke.length > 15) {
       console.log('The maximum length of the value has been exceeded !!!')
     } else {
-      setName(e.target.value)
-      !isChangeName ? setIsChangeName(true) : null
+      setName(inputStroke)
+      if (!isChangeName) setIsChangeName(true)
     }
   }
   const onHandlerSave = () => {
     setIsChangeName(false)
   }
 
+  const transparent = '40'
+
   return (
-    <div className={classes.board}>
+    <div className={classes.column}>
       <div
         className={classes.row}
         style={{ borderBottom: '3px solid ' + color }}
       >
         <div className={classes.title}>
-          <span
-            className={classes.circle}
-            style={{ backgroundColor: color }}
-          ></span>
+          <div className={classes.circle} style={{ backgroundColor: color }} />
           <input
             className={classes.input}
             type="text"
-            placeholder="Name of the board..."
+            placeholder="Name of the column..."
             value={name}
             onChange={onHandlerName}
           />
-          {/* <span className={classes.count}> 33</span> */}
-          {isChangeName ? (
+
+          {isChangeName && (
             <button className={classes.save} onClick={onHandlerSave}>
               Save
             </button>
-          ) : null}
+          )}
         </div>
         <button
           className={classes.btn}
-          style={{ backgroundColor: color + '40' }}
+          style={{ backgroundColor: color + transparent }}
         >
           <DynamicIcon size="10px" name="plus" color={color} />
         </button>

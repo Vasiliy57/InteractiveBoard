@@ -75,7 +75,16 @@ export const Icon: React.FC<IconInterface> = ({ name, size }) => {
     case ICON_NAMES.FILTER:
       return <img src={filterIcon} alt={ICON_NAMES.FILTER} />
     case ICON_NAMES.ARROW_LEFT:
-      return <img src={arrowLeftIcon} alt={ICON_NAMES.ARROW_LEFT} />
+      return size ? (
+        <img
+          src={arrowLeftIcon}
+          alt={ICON_NAMES.ARROW_LEFT}
+          height={size}
+          width={size}
+        />
+      ) : (
+        <img src={arrowLeftIcon} alt={ICON_NAMES.ARROW_LEFT} />
+      )
     default:
       break
   }

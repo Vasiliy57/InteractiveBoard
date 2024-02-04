@@ -1,4 +1,4 @@
-.board {
+.column {
   background-color: #F5F5F5;
   padding: 20px;
   border-radius: 20px;
@@ -87,6 +87,7 @@
 @keyframes glowing {
   0% {
     color: #787486;
+
   }
 
   50% {

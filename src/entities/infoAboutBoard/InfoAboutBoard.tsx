@@ -3,6 +3,7 @@ import { ListParticipants } from './components'
 import { ICON_NAMES } from '@shared/constants'
 
 import classes from './style.module.css'
+import { Button } from '@shared/ui'
 
 interface InfoAboutBoardProps {
   title: string
@@ -13,17 +14,17 @@ export const InfoAboutBoard: React.FC<InfoAboutBoardProps> = ({ title }) => {
     <div className={classes.infoAboutBoard}>
       <div className={classes.rowLeft}>
         <h1 className={classes.title}>{title}</h1>
-        <button className={classes.btn}>
+        <Button>
           <Icon name={ICON_NAMES.EDIT} />
-        </button>
-        <button className={classes.btn}>
+        </Button>
+        <Button>
           <Icon name={ICON_NAMES.LINK} />
-        </button>
+        </Button>
       </div>
       <div className={classes.rowRight}>
-        <button className={classes.btnInvite}>
+        <Button color="purpure" fontSize="1.6rem" fontWeight="500">
           <Icon name={ICON_NAMES.ADD_PURPURE} size="15px" /> Invite
-        </button>
+        </Button>
         <ListParticipants />
       </div>
     </div>

@@ -1,5 +1,5 @@
 import { Header, NavMenu } from '@entities/index'
-import MyUserStore from '@app/store/MyUserStore'
+import MyUserStore from '@shared/store/MyUserStore'
 import { observer } from 'mobx-react-lite'
 
 import classes from './style.module.css'

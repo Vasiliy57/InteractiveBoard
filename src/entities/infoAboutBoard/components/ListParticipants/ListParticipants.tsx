@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { ModalUsers } from '@shared/components/modalUsers/ModalUsers'
-import defaultAvatar from '@shared/assets/images/avatar.jpg'
-import { createPortal } from 'react-dom'
+import { Modal } from '@shared/ui'
+import { FullListParticipants } from '../fullListParticipants/FullListParticipants'
 import { ParticipantInterface } from '@shared/types/participant'
 
+import defaultAvatar from '@shared/assets/images/avatar.jpg'
 import classes from './style.module.css'
 
 export const ListParticipants: React.FC = () => {
@@ -21,14 +21,16 @@ export const ListParticipants: React.FC = () => {
     { avatar: '', id: '8', name: 'John' },
   ])
 
-  const onHandlerModal = (meaning: boolean) => {
-    setIsModal(meaning)
+  const onHandlerModal = (isOpen: boolean) => {
+    setIsModal(isOpen)
   }
+
   const onDeleteParticipant = (id: string) => {
     setListParticipants((prev) => {
       return prev.filter((user) => user.id !== id)
     })
   }
+
   return (
     <div
       className={classes.listParticipants}
@@ -49,16 +51,16 @@ export const ListParticipants: React.FC = () => {
           )
         }
       })}
-
-      {isModal &&
-        createPortal(
-          <ModalUsers
-            list={listParticipants}
-            onHandlerModal={onHandlerModal}
-            onDeleteParticipant={onDeleteParticipant}
-          />,
-          document.body
-        )}
+      <Modal
+        onHandlerModal={onHandlerModal}
+        isModal={isModal}
+        title="Project participants"
+      >
+        <FullListParticipants
+          list={listParticipants}
+          onDeleteParticipant={onDeleteParticipant}
+        />
+      </Modal>
     </div>
   )
 }

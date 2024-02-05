@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import { Authorization, Home, Registration } from '@pages/index'
-import MyUserStore from '@app/store/MyUserStore'
+import MyUserStore from '@shared/store/MyUserStore'
 
 import { ROUTING } from '@shared/constants'
 

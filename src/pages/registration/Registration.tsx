@@ -6,7 +6,7 @@ import classes from './style.module.css'
 export const Registration: React.FC = () => {
   return (
     <form className={classes.registration}>
-      <h3 className={classes.title}>Authorization</h3>
+      <h3 className={classes.title}>Registration</h3>
       <input
         type="text"
         className={classes.input}

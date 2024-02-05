@@ -2,6 +2,7 @@ import { DynamicIcon } from '@shared/assets/icon/DynamicIcon'
 import { useState } from 'react'
 
 import classes from './style.module.css'
+import { Button } from '@shared/ui'
 
 interface ColumnForTasksProps {
   color: string
@@ -52,12 +53,9 @@ export const ColumnForTasks: React.FC<ColumnForTasksProps> = ({
             </button>
           )}
         </div>
-        <button
-          className={classes.btn}
-          style={{ backgroundColor: color + transparent }}
-        >
+        <Button bgColor={color + transparent} borderRadius="5px" padding="7px">
           <DynamicIcon size="10px" name="plus" color={color} />
-        </button>
+        </Button>
       </div>
     </div>
   )

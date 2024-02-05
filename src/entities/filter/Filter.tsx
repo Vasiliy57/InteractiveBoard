@@ -1,4 +1,4 @@
-import { Select } from '@shared/ui'
+import { Button, Select } from '@shared/ui'
 import { Icon } from '@shared/assets'
 import { ICON_NAMES } from '@shared/constants'
 
@@ -15,10 +15,18 @@ export const Filter: React.FC<FilterProps> = ({ addColumn }) => {
         <Select selectType="filter" />
         <Select selectType="calendar" />
       </div>
-      <button className={classes.btn} onClick={addColumn}>
+      <Button
+        fontSize="1.4rem"
+        fontWeight="500"
+        gap="10px"
+        border="def"
+        padding="12px 17px"
+        onClick={addColumn}
+        borderRadius="8px"
+      >
         <Icon name={ICON_NAMES.ADD} size="16px" />
         {'Add Tasks line'}
-      </button>
+      </Button>
     </div>
   )
 }

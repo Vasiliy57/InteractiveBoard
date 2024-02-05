@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { observer } from 'mobx-react-lite'
-import MyUserStore from '@app/store/MyUserStore'
+import MyUserStore from '@shared/store/MyUserStore'
 
 import avatarDef from '@shared/assets/images/avatar.jpg'
 import classes from './style.module.css'

@@ -7,19 +7,19 @@ import classes from './style.module.css'
 interface ModalProps {
   children: JSX.Element
   isModal: boolean
-  onHandlerModal: (isOpen: boolean) => void
+  setIsModal: (isOpen: boolean) => void
   title?: string
 }
 
 export const Modal: React.FC<ModalProps> = ({
   children,
-  onHandlerModal,
+  setIsModal,
   isModal,
   title,
 }) => {
   const onCloseModal = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation()
-    onHandlerModal(false)
+    setIsModal(false)
   }
 
   const onHandlerContent = (event: React.MouseEvent<HTMLElement>) => {

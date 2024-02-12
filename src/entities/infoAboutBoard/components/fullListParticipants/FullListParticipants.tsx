@@ -5,12 +5,12 @@ import classes from './style.module.css'
 
 interface FullListParticipantsProps {
   list: ParticipantInterface[]
-  onDeleteParticipant: (id: string) => void
+  // onDeleteParticipant: (id: string) => void
 }
 
 export const FullListParticipants: React.FC<FullListParticipantsProps> = ({
   list,
-  onDeleteParticipant,
+  // onDeleteParticipant,
 }) => {
   return (
     <div className={classes.list}>
@@ -25,7 +25,7 @@ export const FullListParticipants: React.FC<FullListParticipantsProps> = ({
             </div>
 
             <Button
-              onClick={() => onDeleteParticipant(user.id)}
+              // onClick={() => onDeleteParticipant(user.id)}
               border="def"
               borderRadius="5px"
               padding="3px 5px"

@@ -1,8 +1,9 @@
+import { COLORS } from '@shared/constants/colors'
 import classes from './style.module.css'
 
 interface ButtonInterface {
   children: React.ReactNode
-  color?: string | 'purpure' | 'grey'
+  color?: string
   fontSize?: string
   fontWeight?: '500' | '600' | '700' | '800'
   gap?: string
@@ -15,24 +16,24 @@ interface ButtonInterface {
 
 export const Button: React.FC<ButtonInterface> = ({
   children,
-  color,
+  color = COLORS.GREY,
   fontSize,
   fontWeight,
   gap,
   onClick,
   padding,
-  border,
-  bgColor,
+  border = 'none',
+  bgColor = COLORS.WHITE,
   borderRadius,
 }) => {
   const styleBtn = {
-    color: color === 'purpure' ? '#5030E5' : color ? color : '#787486',
+    color,
     fontSize,
     fontWeight,
     gap,
     padding,
-    border: border === 'def' ? '1px solid #787486' : border ? border : 'none',
-    backgroundColor: bgColor ?? '#fff',
+    border: border === 'def' ? '1px solid #787486' : border,
+    backgroundColor: bgColor,
     borderRadius,
   }
   return (

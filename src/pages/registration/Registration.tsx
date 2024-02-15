@@ -1,15 +1,20 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { observer } from 'mobx-react-lite'
+import { Link, useNavigate } from 'react-router-dom'
+
 import { ROUTING } from '@shared/constants'
+import { AuthorizationApi } from '@shared/requests'
+import MyUserStore from '@shared/store/MyUserStore'
 
 import classes from './style.module.css'
-import { registrationUser } from '@shared/requests'
 
-export const Registration: React.FC = () => {
+export const Registration: React.FC = observer(() => {
   const [login, setLogin] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [repeatPassword, setRepeatPassword] = useState<string>('')
+  const navigate = useNavigate()
+  const { loggedIn } = MyUserStore
 
   const onHandlerLogin = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.length < 14) {
@@ -35,8 +40,21 @@ export const Registration: React.FC = () => {
 
   const onHandlerRegistration = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault()
-    if (password === repeatPassword) {
-      registrationUser(email.trim(), login.trim(), password.trim())
+    const currentEmail = email.trim()
+    const currentLogin = login.trim()
+
+    if (
+      password &&
+      password === repeatPassword &&
+      currentEmail &&
+      currentLogin
+    ) {
+      AuthorizationApi.registrationUser(currentEmail, currentLogin, password)
+        .then((res) => {
+          navigate('/')
+          loggedIn(res.user.email, res.user.login, res.user.id, res.session)
+        })
+        .catch((error) => console.log('catch', error.message))
     }
   }
   return (
@@ -85,4 +103,4 @@ export const Registration: React.FC = () => {
       </p>
     </form>
   )
-}
+})

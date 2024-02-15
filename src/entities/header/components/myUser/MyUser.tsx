@@ -7,20 +7,20 @@ import classes from './style.module.css'
 
 export const MyUser: React.FC = observer(() => {
   const [isSelect, setIsSelect] = useState<boolean>(false)
-  const { setIsAuth } = MyUserStore
+  const { logOut, login } = MyUserStore
 
   const onHandlerSelect = () => {
     setIsSelect((prev) => !prev)
   }
   const onHandlerExit = () => {
-    setIsAuth(false)
+    logOut()
   }
 
   return (
     <div className={classes.myUser}>
       <div className={classes.row} onClick={onHandlerSelect}>
         <div className={classes.column}>
-          <div className={classes.name}>Anima Agrawal</div>
+          <div className={classes.name}>{login}</div>
           <div className={classes.location}>India</div>
         </div>
 

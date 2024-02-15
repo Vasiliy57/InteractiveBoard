@@ -1,39 +1,52 @@
-import { useEffect, useState } from 'react'
-import { ColumnForTasks, Filter, InfoAboutBoard } from '@entities/index'
-import { createColumn, filterColor } from '@shared/utils'
+import { InfoAboutBoard } from '@entities/index'
+import { ColumnList } from '@entities/columnList/ColumnList'
 
-import { boardInterface } from '@shared/types'
+import { Icon } from '@shared/assets'
+import { ICON_NAMES, ROUTING } from '@shared/constants'
+import { Link } from 'react-router-dom'
 import classes from './style.module.css'
 
+const projects = [
+  {
+    title: 'Mobile App',
+    id: '123sa',
+    projectParticipants: [
+      { avatar: '', id: '1', name: 'Sam' },
+      { avatar: '', id: '2', name: 'Alex' },
+      { avatar: '', id: '3', name: 'Vitya Ak' },
+      { avatar: '', id: '4', name: 'Los' },
+      { avatar: '', id: '5', name: 'Amanda' },
+      { avatar: '', id: '6', name: 'Indiana' },
+      { avatar: '', id: '7', name: 'Karl' },
+      { avatar: '', id: '8', name: 'John' },
+    ],
+  },
+]
+
+// ParticipantInterface[]
 export const Home: React.FC = () => {
-  const [columnList, setColumnList] = useState<boardInterface[]>([
-    { title: 'To Do', color: '#5030E5', id: '123asd3432' },
-    { title: 'On progress', color: '#FFA500', id: '123asd' },
-    // { title: 'Done', color: '#8BC48A' },
-  ])
-
-  useEffect(() => {
-    filterColor(columnList)
-  }, [])
-
-  const addColumn = () => {
-    if (columnList.length < 12) {
-      setColumnList([...columnList, createColumn()])
-    } else {
-      console.log('The maximum value has been reached !!!')
-    }
-  }
-
   return (
     <div className={classes.home}>
-      <InfoAboutBoard title={'Mobile App'} />
-      <Filter addColumn={addColumn} />
-      <div className={classes.columnList}>
-        {columnList.map((elem) => {
-          return <ColumnForTasks {...elem} key={elem.id} />
-        })}
-      </div>
+      {projects.length ? (
+        <>
+          <InfoAboutBoard
+            title={projects[0].title}
+            listParticipants={projects[0].projectParticipants}
+          />
+          <ColumnList />
+        </>
+      ) : (
+        <div className={classes.blankPage}>
+          <h2 className={classes.title2}>
+            You don't have more than one project at the moment
+          </h2>
+
+          <Link to={ROUTING.CREATE_PROJECT} className={classes.link}>
+            <Icon name={ICON_NAMES.ADD} size="20px" />
+            Create Project
+          </Link>
+        </div>
+      )}
     </div>
   )
 }
-1

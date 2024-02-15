@@ -1,6 +1,9 @@
 import { InfoAboutBoard } from '@entities/index'
 import { ColumnList } from '@entities/columnList/ColumnList'
 
+import { Icon } from '@shared/assets'
+import { ICON_NAMES, ROUTING } from '@shared/constants'
+import { Link } from 'react-router-dom'
 import classes from './style.module.css'
 
 const projects = [
@@ -33,7 +36,16 @@ export const Home: React.FC = () => {
           <ColumnList />
         </>
       ) : (
-        <div></div>
+        <div className={classes.blankPage}>
+          <h2 className={classes.title2}>
+            You don't have more than one project at the moment
+          </h2>
+
+          <Link to={ROUTING.CREATE_PROJECT} className={classes.link}>
+            <Icon name={ICON_NAMES.ADD} size="20px" />
+            Create Project
+          </Link>
+        </div>
       )}
     </div>
   )

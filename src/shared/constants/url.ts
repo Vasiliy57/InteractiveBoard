@@ -1,4 +1,4 @@
 export const URL = {
-  REGISTRATION: 'http://localhost:3000/auth/registration',
+  REGISTRATION: 'auth/registration',
   AUTHORIZATION: 'http://localhost:3000/auth/authorization',
 }

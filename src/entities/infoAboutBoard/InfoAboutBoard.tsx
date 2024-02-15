@@ -1,5 +1,5 @@
 import { Icon } from '@shared/assets'
-import { ListParticipants } from './components'
+import { ListParticipants } from '@shared/components'
 import { ICON_NAMES } from '@shared/constants'
 import { Button } from '@shared/ui'
 import { ParticipantInterface } from '@shared/types/participant'

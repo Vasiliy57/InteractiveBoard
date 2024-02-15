@@ -16,7 +16,7 @@ interface ButtonInterface {
 
 export const Button: React.FC<ButtonInterface> = ({
   children,
-  color = COLORS.GREY,
+  color,
   fontSize,
   fontWeight,
   gap,
@@ -27,7 +27,7 @@ export const Button: React.FC<ButtonInterface> = ({
   borderRadius,
 }) => {
   const styleBtn = {
-    color,
+    color: color === 'purpure' ? COLORS.PURPURE : COLORS.GREY,
     fontSize,
     fontWeight,
     gap,

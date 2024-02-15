@@ -14,7 +14,6 @@ export const registrationUser = async (
 
     const newUser = await fetch(URL.REGISTRATION, {
       method: 'POST',
-      mode: 'no-cors',
       headers: {
         'Content-Type': 'application/json',
       },

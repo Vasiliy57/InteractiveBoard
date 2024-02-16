@@ -1,15 +1,12 @@
+import { observer } from 'mobx-react-lite'
+import MyProjectsStore from '@shared/store/MyProjectsStore'
 import { Icon } from '@shared/assets'
 import { ICON_NAMES } from '@shared/constants'
 
 import classes from './style.module.css'
 
-export const MyProjects: React.FC = () => {
-  const listProjects = [
-    'Mobile App',
-    'Website Redesign',
-    'Design System',
-    'Wiredraws',
-  ]
+export const MyProjects: React.FC = observer(() => {
+  const { listMyProjects } = MyProjectsStore
   return (
     <div className={classes.myProjects}>
       <div className={classes.row}>
@@ -19,12 +16,12 @@ export const MyProjects: React.FC = () => {
         </button>
       </div>
       <ul className={classes.list}>
-        {listProjects.map((elem) => {
+        {listMyProjects.map((elem) => {
           return (
-            <li className={classes.item} key={elem}>
+            <li className={classes.item} key={elem.id}>
               <span className={classes.circle}></span>
               <a className={classes.link} href="">
-                {elem}
+                {elem.title}
               </a>
             </li>
           )
@@ -32,4 +29,4 @@ export const MyProjects: React.FC = () => {
       </ul>
     </div>
   )
-}
+})

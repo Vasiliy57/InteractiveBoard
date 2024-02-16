@@ -7,7 +7,7 @@ interface ButtonInterface {
   fontSize?: string
   fontWeight?: '500' | '600' | '700' | '800'
   gap?: string
-  onClick?: () => void
+  onClick?: (e: React.MouseEvent) => void
   padding?: string
   border?: string | 'def'
   bgColor?: string

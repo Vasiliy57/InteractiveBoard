@@ -1,3 +1,4 @@
-import { ListParticipants } from './ListParticipants/ListParticipants'
+import { ListParticipants } from './listParticipants/ListParticipants'
+import { RowParticipants } from './rowParticipants/RowParticipants'
 
-export { ListParticipants }
+export { RowParticipants, ListParticipants }

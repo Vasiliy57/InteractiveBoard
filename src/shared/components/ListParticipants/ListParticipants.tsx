@@ -1,47 +1,85 @@
-import { useState } from 'react'
-import { Modal } from '@shared/ui'
-import { FullListParticipants } from './components/FullListParticipants'
 import { ParticipantInterface } from '@shared/types/participant'
-
+import { Button } from '@shared/ui'
 import defaultAvatar from '@shared/assets/images/avatar.jpg'
 import classes from './style.module.css'
 
 interface ListParticipantsProps {
-  listParticipants: ParticipantInterface[]
+  list: ParticipantInterface[]
+  typeList: 'delete' | 'add' | 'combined'
+  fullList?: ParticipantInterface[]
 }
 
 export const ListParticipants: React.FC<ListParticipantsProps> = ({
-  listParticipants,
+  list,
+  typeList,
+  fullList,
 }) => {
-  const [isModal, setIsModal] = useState<boolean>(false)
+  const onHandlerParticipant = (id: string, isInArray = false) => {
+    console.log(id)
 
-  return (
-    <div className={classes.listParticipants} onClick={() => setIsModal(true)}>
-      {listParticipants.map((user, index) => {
-        if (index < 4) {
+    if (typeList === 'delete' || isInArray) {
+      // delete participant from base
+    } else if (typeList === 'add' || !isInArray) {
+      // add participant in base
+    }
+  }
+
+  if (typeList === 'combined') {
+    return (
+      <div className={classes.list}>
+        {fullList!.map((user) => {
+          const isInArray: boolean = Boolean(
+            list?.some((elem) => elem.id === user.id)
+          )
           return (
-            <div className={classes.avatar} key={user.id}>
-              <img src={user.avatar || defaultAvatar} alt={user.name} />
+            <div className={classes.user} key={user.id}>
+              <div className={classes.row}>
+                <div className={classes.avatar} key={user.id}>
+                  <img src={user.avatar || defaultAvatar} alt={user.name} />
+                </div>
+                <div className={classes.name}>{user.name}</div>
+              </div>
+
+              <Button
+                onClick={() => onHandlerParticipant(user.id, isInArray)}
+                border="def"
+                borderRadius="5px"
+                padding="3px 5px"
+                fontSize="1.4rem"
+              >
+                {isInArray ? 'Delete' : 'Add'}
+              </Button>
             </div>
           )
-        } else if (index === 4) {
+        })}
+      </div>
+    )
+  } else {
+    return (
+      <div className={classes.list}>
+        {list.map((user) => {
           return (
-            <div className={classes.noAvatar} key={user.id}>
-              +{listParticipants.length - 4}
+            <div className={classes.user} key={user.id}>
+              <div className={classes.row}>
+                <div className={classes.avatar} key={user.id}>
+                  <img src={user.avatar || defaultAvatar} alt={user.name} />
+                </div>
+                <div className={classes.name}>{user.name}</div>
+              </div>
+
+              <Button
+                onClick={() => onHandlerParticipant(user.id)}
+                border="def"
+                borderRadius="5px"
+                padding="3px 5px"
+                fontSize="1.4rem"
+              >
+                {typeList === 'delete' ? 'Delete' : 'Add'}
+              </Button>
             </div>
           )
-        }
-      })}
-      <Modal
-        setIsModal={setIsModal}
-        isModal={isModal}
-        title="Project participants"
-      >
-        <FullListParticipants
-          list={listParticipants}
-          // onDeleteParticipant={onDeleteParticipant}
-        />
-      </Modal>
-    </div>
-  )
+        })}
+      </div>
+    )
+  }
 }

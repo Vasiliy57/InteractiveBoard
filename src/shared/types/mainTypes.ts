@@ -3,3 +3,14 @@ export interface boardInterface {
   color: string
   id: string
 }
+export interface UserDataInterface {
+  user: {
+    login: string
+    email: string
+    id: string
+  }
+  session: {
+    accessToken: string
+    refreshToken: string
+  }
+}

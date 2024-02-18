@@ -1,16 +1,26 @@
-.listParticipants {
+.list {
+  position: relative;
   display: flex;
-  align-items: center;
-  cursor: pointer;
+  flex-direction: column;
+  gap: 30px;
+  margin: 40px auto 20px;
+
+  border-radius: 15px;
 }
 
+
+.user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+}
 
 .avatar {
   width: 38px;
   height: 38px;
-  border: 1px solid #fff;
   border-radius: 50%;
-  margin-left: -8px;
 }
 
 .avatar img {
@@ -19,16 +29,16 @@
   border-radius: 50%;
 }
 
-.noAvatar {
-  width: 38px;
-  height: 38px;
-  border: 1px solid #fff;
-  background-color: #F4D7DA;
-  color: #D25B68;
+.name {
   font-size: 1.6rem;
-  margin-left: -8px;
+  font-weight: 500;
+  color: var(--color-text);
+
+}
+
+.row {
+  cursor: pointer;
   display: flex;
+  gap: 15px;
   align-items: center;
-  justify-content: center;
-  border-radius: 50%;
 }

@@ -1,3 +1,3 @@
-import { AppProvider } from './appProvider/AppProvider'
+import { PageProvider } from './appProvider/PageProvider'
 
-export { AppProvider }
+export { PageProvider }

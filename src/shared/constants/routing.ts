@@ -1,6 +1,8 @@
 export const ROUTING = {
-  HOME: '/',
+  HOME: '/home',
+  PROJECT: '/project/:id',
   AUTHORIZATION: '/authorization',
   REGISTRATION: '/registration',
   CREATE_PROJECT: '/create-project',
+  BLANK: '/blank',
 }

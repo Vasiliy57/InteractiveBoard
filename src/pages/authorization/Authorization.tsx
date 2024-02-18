@@ -1,13 +1,17 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { observer } from 'mobx-react-lite'
+import { Link, useNavigate } from 'react-router-dom'
 import { ROUTING } from '@shared/constants'
+import { AuthorizationApi } from '@shared/requests'
+import MyUserStore from '@shared/store/MyUserStore'
 
 import classes from './style.module.css'
-import { authorizationUser } from '@shared/requests/authorization'
 
-export const Authorization: React.FC = () => {
+export const Authorization: React.FC = observer(() => {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+  const navigate = useNavigate()
+  const { loggedIn } = MyUserStore
 
   const onHandEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.length < 64) {
@@ -22,8 +26,15 @@ export const Authorization: React.FC = () => {
 
   const onHandlerAuth = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault()
-    if (email.trim() && password.trim()) {
-      authorizationUser(email.trim(), password.trim())
+    const currentEmail = email.trim()
+
+    if (currentEmail && password) {
+      AuthorizationApi.authorizationUser(currentEmail, password)
+        .then((res) => {
+          navigate('/')
+          loggedIn(res.user.email, res.user.login, res.user.id, res.session)
+        })
+        .catch((error) => console.log('catch', error.response.data.message))
     }
   }
 
@@ -55,4 +66,4 @@ export const Authorization: React.FC = () => {
       </p>
     </form>
   )
-}
+})

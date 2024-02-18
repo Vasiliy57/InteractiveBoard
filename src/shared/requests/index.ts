@@ -1,3 +1,3 @@
-import { registrationUser } from './registration'
+import { AuthorizationApi } from './authorization'
 
-export { registrationUser }
+export { AuthorizationApi }

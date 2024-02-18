@@ -57,3 +57,11 @@ export const getColor = (): getColorType => {
     return getColor()
   }
 }
+
+export const getRandomColorRGB = () => {
+  return `rgb(
+  ${getRandomNumber(40, 200)},
+  ${getRandomNumber(40, 200)},
+  ${getRandomNumber(40, 200)}
+  )`
+}

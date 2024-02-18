@@ -1,3 +1,3 @@
-import { boardInterface } from './mainTypes'
+import { boardInterface, UserDataInterface } from './mainTypes'
 
-export type { boardInterface }
+export type { boardInterface, UserDataInterface }

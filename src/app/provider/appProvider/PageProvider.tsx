@@ -4,11 +4,11 @@ import { observer } from 'mobx-react-lite'
 
 import classes from './style.module.css'
 
-interface AppProviderProps {
+interface PageProviderProps {
   children: React.ReactNode
 }
 
-export const AppProvider: React.FC<AppProviderProps> = observer(
+export const PageProvider: React.FC<PageProviderProps> = observer(
   ({ children }) => {
     const { isAuth } = MyUserStore
     if (isAuth) {

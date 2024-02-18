@@ -83,3 +83,16 @@ export const ListParticipants: React.FC<ListParticipantsProps> = ({
     )
   }
 }
+
+// const listP = ({ listForAdd = null, listForRemove = null }) => {
+//   return (
+//     <div>
+//       {listForAdd?.map((user) => {
+//         <Partic onPressAdd={() => {}}></Partic>
+//       })}
+//       {listForRemove?.map((user) => {
+//         <Partic onPressDell={() => {}}></Partic>
+//       })}
+//     </div>
+//   )
+// }

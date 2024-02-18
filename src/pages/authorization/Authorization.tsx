@@ -34,7 +34,7 @@ export const Authorization: React.FC = observer(() => {
           navigate('/')
           loggedIn(res.user.email, res.user.login, res.user.id, res.session)
         })
-        .catch((error) => console.log('catch', error))
+        .catch((error) => console.log('catch', error.response.data.message))
     }
   }
 

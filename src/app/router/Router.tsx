@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 
 import {
   Authorization,
@@ -16,12 +16,14 @@ export const Router: React.FC = observer(() => {
   const { isAuth } = MyUserStore
 
   return (
-    <BrowserRouter>
+    <>
       {isAuth ? (
         <Routes>
           <Route path={ROUTING.HOME} element={<Home />} />
+          <Route path={ROUTING.PROJECT} element={<Home />} />
           <Route path={ROUTING.CREATE_PROJECT} element={<CreateProject />} />
           <Route path={ROUTING.BLANK} element={<BlankBoard />} />
+          <Route path="*" element={<BlankBoard />} />
         </Routes>
       ) : (
         <Routes>
@@ -30,6 +32,6 @@ export const Router: React.FC = observer(() => {
           <Route path="/" element={<Authorization />} />
         </Routes>
       )}
-    </BrowserRouter>
+    </>
   )
 })

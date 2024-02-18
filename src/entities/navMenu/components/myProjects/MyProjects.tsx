@@ -1,6 +1,7 @@
+import { Link } from 'react-router-dom'
+import { Icon } from '@shared/assets'
 import { observer } from 'mobx-react-lite'
 import MyProjectsStore from '@shared/store/MyProjectsStore'
-import { Icon } from '@shared/assets'
 import { ICON_NAMES } from '@shared/constants'
 
 import classes from './style.module.css'
@@ -20,9 +21,10 @@ export const MyProjects: React.FC = observer(() => {
           return (
             <li className={classes.item} key={elem.id}>
               <span className={classes.circle}></span>
-              <a className={classes.link} href="">
+
+              <Link className={classes.link} to={`/project/${elem.id}`}>
                 {elem.title}
-              </a>
+              </Link>
             </li>
           )
         })}

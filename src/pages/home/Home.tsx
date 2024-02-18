@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { InfoAboutBoard } from '@entities/index'
 import { ColumnList } from '@entities/columnList/ColumnList'
 import { ParticipantInterface } from '@shared/types/participant'
@@ -29,9 +29,13 @@ interface projectInterface {
 export const Home: React.FC = () => {
   const [project, setProject] = useState<projectInterface | null>(projectMoc)
   const navigate = useNavigate()
+  const params = useParams()
 
   useEffect(() => {
-    if (!project) navigate('/blank')
+    if (params.id) {
+      //запрос на сервер
+    }
+    console.log(params)
   }, [project, navigate])
 
   return (

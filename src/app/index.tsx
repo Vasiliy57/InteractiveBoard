@@ -1,12 +1,15 @@
 import { Router } from './router/Router'
 import './style/null-style.css'
 import './style/base-style.css'
-import { AppProvider } from './provider'
+import { PageProvider } from './provider'
+import { BrowserRouter } from 'react-router-dom'
 
 export const App: React.FC = () => {
   return (
-    <AppProvider>
-      <Router />
-    </AppProvider>
+    <BrowserRouter>
+      <PageProvider>
+        <Router />
+      </PageProvider>
+    </BrowserRouter>
   )
 }
